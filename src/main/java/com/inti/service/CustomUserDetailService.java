@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class CustomUserDetailService  implements UserDetailService {
+public class CustomUserDetailService  implements IUserDetailService {
 @Autowired
-UtilisateurDetailService usi;
+IUserDetailService usi;
 
 @override
-public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
+public IUserDetailService loadUserByUsername(String username) throws UsernameNotFoundException {
 	Utilisateur u = usi.findByUsernameOrEmail(username);
 	if(u== null) {
 		throw new UsernameNotFoundException("Utilisateur : " +username+" inconnu");
